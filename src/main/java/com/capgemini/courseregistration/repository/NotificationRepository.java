@@ -1,0 +1,10 @@
+package com.capgemini.courseregistration.repository;
+
+import com.capgemini.courseregistration.entity.Notification;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface NotificationRepository extends JpaRepository<Notification, Long> {
+    List<Notification> findByStudentIdOrderByTimestampDesc(Long studentId);
+    long countByStudentIdAndIsRead(Long studentId, Boolean isRead);
+}
